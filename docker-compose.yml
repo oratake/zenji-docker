@@ -4,14 +4,14 @@ services:
   php:
     build: ./infra/php
     volumes:
-      - ./backend:/work
+      - ${WORKING_DIR}:/work
 
   nginx:
     image: nginx:1.20-alpine
     ports:
       - 8080:80
     volumes:
-      - ./backend:/work
+      - ${WORKING_DIR}:/work
       - ./infra/nginx/:/etc/nginx/conf.d/
     working_dir: /work
 
